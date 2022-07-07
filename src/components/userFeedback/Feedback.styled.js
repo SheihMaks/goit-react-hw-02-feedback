@@ -30,4 +30,4 @@ list-style:none;
 `
 
 export const StatisticsItem=styled.li`
-`
+font-weight:600;`
