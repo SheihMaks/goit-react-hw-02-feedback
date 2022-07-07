@@ -10,7 +10,7 @@ width:35%;`
 export const MainMessage=styled.h1`
 font-weight:600;`
 
-export const ButtonsDiv=styled.div`
+export const FeedbackOptions=styled.div`
 display:flex;
 `
 
