@@ -1,4 +1,4 @@
-import {FeedbackOptions,Button} from './Controls.styled'
+import {FeedbackOptions,Button} from './FeedbackOptions.styled'
 
 
 export const Controls=({onBtnGood,onBtnNeutral,onBtnBad})=>{
