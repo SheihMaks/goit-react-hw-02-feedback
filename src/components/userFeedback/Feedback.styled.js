@@ -25,7 +25,7 @@ export const StatisticsContainer=styled.div`
 export const StatisticsHeader=styled.h2`
 `
 
-export const Statistics=styled.ul`
+export const StatisticsList=styled.ul`
 list-style:none;
 `
 

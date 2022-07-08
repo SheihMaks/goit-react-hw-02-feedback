@@ -1,12 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import {FeedBackMain,FeedBackContainer,MainMessage,FeedbackOptions,Button,StatisticsContainer,StatisticsHeader,Statistics,StatisticsItem} from './Feedback.styled'
+import {Controls} from '../Controls/Controls'
+import {FeedBackMain,FeedBackContainer,MainMessage,StatisticsContainer,StatisticsHeader,StatisticsList,StatisticsItem} from './Feedback.styled'
+
 export class FeedbackComponent extends React.Component{
-    // static defaultProps = {
-    //     igood: 2,
-    // ineutral: 2,
-    // ibad: 2
-    //   };
+    
     state={
     good: 0,
     neutral: 0,
@@ -23,14 +21,15 @@ this.setState((prevState)=>{ return {good: prevState.good +=1}})
         })
     }
 
-    OnBtnBad=()=>{
+    onBtnBad=()=>{
         this.setState((prevState)=>{
             return {bad:prevState.bad+=1}
         })
     }
 
     countTotalFeedback=()=>{
-     return this.state.good + this.state.neutral + this.state.bad
+        const {good,neutral,bad}=this.state;
+     return good + neutral + bad
     }
 
     countPositiveFeedbackPercentage=()=>{
@@ -40,20 +39,19 @@ return (this.state.good/this.countTotalFeedback())*100
     render(){
         return(<FeedBackMain><FeedBackContainer>
             <MainMessage>Please leave feedback</MainMessage>
-            <FeedbackOptions>
-                <Button type='button' onClick={this.onBtnGood}>Good</Button>
-                <Button type='button' onClick={this.onBtbNeutral}>Neutral</Button>
-                <Button type='button' onClick={this.OnBtnBad}>Bad</Button>
-            </FeedbackOptions>
+            <Controls 
+            onBtnGood={this.onBtnGood}
+            onBtnNeutral={this.onBtbNeutral}
+            onBtnBad={this.onBtnBad}/>
             <StatisticsContainer>
                 <StatisticsHeader>Statistics</StatisticsHeader>
-                <Statistics>
+                <StatisticsList>
                     <StatisticsItem>Good: {this.state.good}</StatisticsItem>
                     <StatisticsItem>Neutral: {this.state.neutral}</StatisticsItem>
                     <StatisticsItem>Bad: {this.state.bad}</StatisticsItem>
                     <StatisticsItem>Total: {this.countTotalFeedback()}</StatisticsItem>
                     <StatisticsItem>Positive feedback: {this.countPositiveFeedbackPercentage()}%</StatisticsItem>
-                </Statistics>
+                </StatisticsList>
             </StatisticsContainer>
 </FeedBackContainer></FeedBackMain>
             )
