@@ -1,10 +1,8 @@
 import {FeedbackOptions,Button} from './FeedbackOptions.styled'
 
 
-export const Controls=({onBtnGood,onBtnNeutral,onBtnBad})=>{
-return(<FeedbackOptions>
-                <Button type='button' onClick={onBtnGood}>Good</Button>
-                <Button type='button' onClick={onBtnNeutral}>Neutral</Button>
-                <Button type='button' onClick={onBtnBad}>Bad</Button>
-            </FeedbackOptions>)
+export const Controls=({options,onLeaveFeedback})=>{
+return(<FeedbackOptions>{options.map(el=>
+                <Button type='button' onClick={onLeaveFeedback} key={el}>{el}</Button>              
+)}</FeedbackOptions>)
 }
