@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import {Controls} from '../Controls/FeedbackOptions';
 import {Statistics} from '../feedbackStatistics/statistics';
+import { Section } from '../sectionDoc/Section';
 import {FeedBackMain} from './Feedback.styled';
-import { Section } from 'components/sectionDoc/Section';
+import { Notification } from '../NotificationMsg/Notification';
 
 export class FeedbackComponent extends React.Component{
     
@@ -29,6 +30,7 @@ return Math.round((this.state.good/this.countTotalFeedback())*100)
 
     render(){
         const{good,neutral,bad} = this.state;
+        const total = this.countTotalFeedback();
         return(<FeedBackMain><Section title='Please leave feedback'>
             <Controls 
             options={Object.keys(this.state)}
@@ -36,12 +38,12 @@ return Math.round((this.state.good/this.countTotalFeedback())*100)
             />
             </Section>
             <Section>
-            <Statistics
+            { total >0 ? (<Statistics
             good={good}
             neutral={neutral}
             bad={bad}
             total={this.countTotalFeedback()}
-            positivePercentage={this.countPositiveFeedbackPercentage()}/></Section>
+            positivePercentage={this.countPositiveFeedbackPercentage()}/>):(<Notification title='There is no feedback'/>)}</Section>
 </FeedBackMain>
             )
     }

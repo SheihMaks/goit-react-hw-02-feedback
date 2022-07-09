@@ -12,3 +12,4 @@ export const Statistics=({good,neutral,bad,total,positivePercentage})=>{
         </StatisticsList>
     </StatisticsContainer>)
 }
+
