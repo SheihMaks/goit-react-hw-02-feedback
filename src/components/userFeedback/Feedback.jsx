@@ -1,5 +1,4 @@
-import React from 'react'
-import PropTypes from 'prop-types';
+import React from 'react';
 import {Controls} from '../Controls/FeedbackOptions';
 import {Statistics} from '../feedbackStatistics/statistics';
 import { Section } from '../sectionDoc/Section';
